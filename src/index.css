@@ -1,13 +1,156 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --blue-ribbon: #0468FF;
+  --big-stone: #152242;
+  --athens-gray: #F1F2F4;
+
+  --basic-white: #FFFFFF;
+  --basic-black: #000000;
+  --basic-black-87: rgba(0, 0, 0, 0.87);
+  --basic-black-54: rgba(0, 0, 0, 0.54);
+  --basic-gray: var(--athens-gray);
+
+  --text-color: var(--basic-black-87);
+  --text-color-secondary: var(--basic-black-54);
+  --text-color-accent: var(--big-stone);
+  --accent-color: var(--blue-ribbon);
+  --border-color: rgba(21, 34, 66, 0.1);
+  --border-color-hover: rgba(21, 34, 66, 0.3);
+  --color-disabled: rgba(21, 34, 66, 0.2);
+
+  --font-size: 14px;
+
+  --transition-time: 200ms;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
+html {
+  font-family: 'Lato', 'Arial', sans-serif;
+  font-size: var(--font-size);
+
+  color: var(--text-color);
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+
+  background-color: var(--basic-white);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+
+  -webkit-tap-highlight: none;
+}
+
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  white-space: nowrap;
+
+  border: 0;
+
+  clip-path: inset(100%);
+}
+
+.button {
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 22px;
+
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 114px;
+  padding: 10px 16px;
+
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition-time), background-color var(--transition-time), opacity var(--transition-time);
+  text-align: center;
+  text-decoration: none;
+
+  color: inherit;
+  outline: 0 none;
+
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none
+}
+
+.button:hover,
+.button:focus {
+  opacity: 0.8;
+}
+
+.button:active {
+  opacity: 0.6;
+}
+
+.button--primary {
+  color: var(--basic-white);
+  background-color: var(--accent-color);
+}
+
+.button--secondary {
+  color: var(--accent-color);
+  background-color: var(--basic-gray);
+}
+
+.button[disabled] {
+  color: var(--color-disabled);
+  background-color: var(--basic-gray);
+}
+
+.form-control {
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 26px;
+
+  padding: 0 0 4px;
+
+  resize: none;
+  transition: border var(--transition-time);
+  vertical-align: middle;
+
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  outline: 0 none;
+  background-color: var(--basic-white);
+
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+.form-control:hover,
+.form-control:focus {
+  border-color: var(--border-color-hover);
+}
+
