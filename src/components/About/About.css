@@ -1,0 +1,42 @@
+.about-form {
+    margin-bottom: 56px;
+}
+
+.about-radio {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.about-radio__label {
+    font-size: 16px;
+    line-height: 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    padding: 9px 10px;
+
+    transition: background-color var(--transition-time), height var(--transition-time);
+    cursor: pointer;
+    text-align: center;
+
+    color: var(--accent-color);
+    border-radius: 4px;
+    background-color: var(--basic-gray);
+}
+
+.about-radio__label:hover,
+.about-radio__label:focus {
+    background-color: var(--border-color);
+}
+
+.about-radio__input:checked + .about-radio__label {
+    height: 44px;
+
+    color: var(--basic-white);
+    background-color: var(--accent-color);
+}
