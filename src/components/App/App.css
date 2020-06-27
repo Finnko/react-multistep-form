@@ -88,60 +88,6 @@ input[type="radio"].visually-hidden {
     background-color: var(--basic-gray);
 }
 
-.form-control {
-    font-family: inherit;
-    font-size: 20px;
-    line-height: 26px;
-
-    width: 100%;
-    padding: 0 0 4px;
-
-    resize: none;
-    transition: border var(--transition-time);
-    vertical-align: middle;
-
-    color: var(--text-color);
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    outline: 0 none;
-    background-color: var(--basic-white);
-
-    appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-}
-
-.form-control::placeholder {
-    font-size: 20px;
-    line-height: 26px;
-
-    color: var(--text-color);
-}
-
-.form-label {
-    font-size: 14px;
-    line-height: 18px;
-
-    display: block;
-
-    margin-bottom: 4px;
-
-    color: var(--text-color-secondary);
-}
-
-.form-field {
-    margin-bottom: 15px;
-}
-
-.form-field:last-child {
-    margin-bottom: 0;
-}
-
-.form-control:hover,
-.form-control:focus {
-    border-color: var(--border-color-hover);
-}
-
 .buttons {
     display: flex;
     align-items: center;

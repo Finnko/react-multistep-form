@@ -18,9 +18,7 @@ function App() {
             <WelcomeScreen />
           </Route>
           <Route path={PathName.INTRO}>
-            {({match}) => (
-                <Intro match={match}/>
-            )}
+            <Intro />
           </Route>
           <Route path={PathName.ABOUT}>
             {({match}) => (

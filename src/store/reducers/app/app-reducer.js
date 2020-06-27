@@ -1,20 +1,14 @@
 import {actionTypes} from "../../action-types";
 
 const initialState = {
-  firstName: 'Alex',
-  secondName: '',
+  firstName: 'Хабиров',
+  secondName: 'Алексей',
+  patronymic: 'Расимович',
+  male: '',
+  birthday: '',
+  birthdayPlace: '',
+  location: '',
 };
-
-// function reducer(state = initialState, action) {
-//   if (action.type === 'UPDATE_FIELD') {
-//     return {
-//       ...state,
-//       [action.payload.key]: action.payload.value,
-//     };
-//   }
-//   return state;
-// }
-
 
 export default function appReducer(state = initialState, action) {
   const {type, payload} = action;

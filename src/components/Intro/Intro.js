@@ -1,19 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getPathByStep} from '../../utils/common';
 import {ActionCreator} from "../../store/actions/action-creator";
 import NameSpace from "../../store/name-space";
 import { ReactComponent as JobIcon } from "../../img/job.svg"
 
 import './Intro.css';
 import Layout from "../Layout/Layout";
+import {PathName} from '../../const';
+import Input from '../Input/Input';
 
 function Intro_({
-  onButtonClick,
   firstName,
   secondName,
-  middleName,
+  patronymic,
   updateField,
 }) {
 
@@ -34,37 +34,35 @@ function Intro_({
           </p>
 
           <form className="intro-form">
-            <div className="form-field">
-              <label htmlFor="surname" className="form-label">
-                Фамилия
-              </label>
-              <input type="text" id="surname" value={firstName} name="firstName" className="form-control" onChange={handleChange}/>
-            </div>
+            <Input
+              id="surname"
+              label="Фамилия"
+              value={firstName}
+              name="firstName"
+              onInputChange={handleChange}
+            />
 
-            <div className="form-field">
-              <div className="form-field">
-                <label htmlFor="name" className="form-label">
-                  Имя
-                </label>
-                <input type="text" id="name" value={secondName} name="secondName" className="form-control" onChange={handleChange}/>
-              </div>
-            </div>
+            <Input
+                id="name"
+                label="Имя"
+                value={secondName}
+                name="secondName"
+                onInputChange={handleChange}
+            />
 
-            <div className="form-field">
-              <div className="form-field">
-                <label htmlFor="patronymiс" className="form-label">
-                  Отчество
-                </label>
-                <input type="text" id="patronymiс" value={middleName} name="middleName" className="form-control" onChange={handleChange}/>
-              </div>
-            </div>
+            <Input
+                id="patronymic"
+                label="Отчество"
+                value={patronymic}
+                name="patronymic"
+                onInputChange={handleChange}
+            />
           </form>
         </div>
         <div className="buttons">
           <Link
-              to={`/`}
+              to={PathName.ABOUT}
               className="button button--primary"
-              onClick={() => onButtonClick('next')}
           >
               <span className="button__text">
                   Далее
@@ -82,7 +80,7 @@ function mapStateToProps(state) {
   return {
     firstName: state[NameSpace.APP].firstName,
     secondName: state[NameSpace.APP].secondName,
-    middleName: state[NameSpace.APP].middleName,
+    patronymic: state[NameSpace.APP].patronymic,
   };
 }
 
