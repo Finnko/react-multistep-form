@@ -1,0 +1,16 @@
+.header {
+    min-height: 50px;
+    padding: 6px 0;
+
+    border-bottom: 1px solid var(--mercury);
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+}
+
+.header__toggle.button {
+    min-width: auto;
+    padding: 0;
+}

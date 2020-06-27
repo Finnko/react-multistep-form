@@ -1,38 +1,181 @@
-.App {
-  text-align: center;
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+    position: absolute;
+
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+
+    white-space: nowrap;
+
+    border: 0;
+
+    clip-path: inset(100%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.button {
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 22px;
+
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 114px;
+    padding: 9px 16px;
+
+    cursor: pointer;
+    transition: color var(--transition-time), background-color var(--transition-time), opacity var(--transition-time);
+    text-align: center;
+    text-decoration: none;
+
+    color: inherit;
+    outline: 0 none;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.button:hover,
+.button:focus {
+    opacity: 0.8;
 }
 
-.App-link {
-  color: #61dafb;
+.button:active {
+    opacity: 0.6;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button--primary {
+    margin-left: auto;
+
+    color: var(--basic-white);
+    background-color: var(--accent-color);
+}
+
+.button--secondary {
+    color: var(--accent-color);
+    background-color: var(--basic-gray);
+}
+
+.button--secondary .button__icon {
+    transform: rotate(-180deg);
+}
+
+.button[disabled] {
+    color: var(--color-disabled);
+    background-color: var(--basic-gray);
+}
+
+.form-control {
+    font-family: inherit;
+    font-size: 20px;
+    line-height: 26px;
+
+    width: 100%;
+    padding: 0 0 4px;
+
+    resize: none;
+    transition: border var(--transition-time);
+    vertical-align: middle;
+
+    color: var(--text-color);
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    outline: 0 none;
+    background-color: var(--basic-white);
+
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+.form-control::placeholder {
+    font-size: 20px;
+    line-height: 26px;
+
+    color: var(--text-color);
+}
+
+.form-label {
+    font-size: 14px;
+    line-height: 18px;
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--text-color-secondary);
+}
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field:last-child {
+    margin-bottom: 0;
+}
+
+.form-control:hover,
+.form-control:focus {
+    border-color: var(--border-color-hover);
+}
+
+.page-title {
+    font-size: 22px;
+    line-height: 28px;
+
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.page-content {
+    padding: 20px 12px 50px;
+}
+
+.page-text {
+    font-size: 16px;
+    line-height: 22px;
+
+    margin: 0;
+    margin-bottom: 21px;
+
+    color: var(--text-color-dusty);
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+
+    padding: 0 4px;
+}
+
+.button__text + .button__icon {
+    margin-left: 16px;
+}
+
+.button__icon svg {
+    width: 13px;
+    height: 23px;
+}
+
+.button__icon + .button__text {
+    margin-left: 14px;
 }
