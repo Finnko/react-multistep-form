@@ -2,6 +2,8 @@ import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getPathByStep} from '../../utils/common';
+import {ActionCreator} from "../../store/actions/action-creator";
+import NameSpace from "../../store/name-space";
 import {Header} from '../Header/Header';
 import { ReactComponent as JobIcon } from "../../img/job.svg"
 
@@ -13,7 +15,6 @@ function Intro_({
   firstName,
   secondName,
   middleName,
-  dispatch,
   updateField,
 }) {
 
@@ -21,6 +22,7 @@ function Intro_({
     const { name, value } = event.target;
     updateField(name, value);
   }
+
   return (
       <Fragment>
         <Header/>
@@ -89,22 +91,16 @@ function Intro_({
 
 function mapStateToProps(state) {
   return {
-    firstName: state.firstName,
-    secondName: state.secondName,
-    middleName: state.middleName,
+    firstName: state[NameSpace.APP].firstName,
+    secondName: state[NameSpace.APP].secondName,
+    middleName: state[NameSpace.APP].middleName,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     updateField: (name, value) => {
-      dispatch({
-        type: 'UPDATE_FIELD',
-        payload: {
-          key: name,
-          value,
-        }
-      })
+      dispatch(ActionCreator.updateField(name, value));
     }
   };
 }

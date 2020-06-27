@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {PathName} from '../../const';
-import {store} from '../../store';
+import {store} from '../../store/store';
 import {Intro} from '../Intro/Intro';
 import {About} from '../About/About';
 
@@ -33,8 +33,8 @@ function App() {
       </Router>
     </Provider>
   );
-    
-     
+
+
 }
 
 export default App;

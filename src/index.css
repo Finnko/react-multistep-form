@@ -1,5 +1,5 @@
 :root {
-  --blue-ribbon: #0468FF;
+  --grass: #2B9E2F;
   --big-stone: #152242;
   --athens-gray: #F1F2F4;
   --mercury: #E6E6E6;
@@ -15,7 +15,7 @@
   --text-color-dusty: var(--basic-black-72);
   --text-color-secondary: var(--basic-black-54);
   --text-color-accent: var(--big-stone);
-  --accent-color: var(--blue-ribbon);
+  --accent-color: var(--grass);
   --border-color: rgba(21, 34, 66, 0.1);
   --border-color-hover: rgba(21, 34, 66, 0.3);
   --color-disabled: rgba(21, 34, 66, 0.2);
