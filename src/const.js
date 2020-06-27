@@ -1,6 +1,17 @@
 const PathName = {
-    0: `/`,
-    1: `/about`,
+    ROOT: `/`,
+    INTRO: `/intro`,
+    ABOUT: `/about`,
+    LOCATION: `/location`,
+    SALARY: `/salary`,
 }
 
-export {PathName};
+const routes = [
+    PathName.ROOT,
+    PathName.INTRO,
+    PathName.ABOUT,
+    PathName.LOCATION,
+    PathName.SALARY,
+];
+
+export {PathName, routes};

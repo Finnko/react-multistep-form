@@ -1,0 +1,29 @@
+.page {
+    max-width: 375px;
+    margin: 100px auto 0;
+    padding-bottom: 40px;
+
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+}
+
+.page-title {
+    font-size: 22px;
+    line-height: 28px;
+
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.page-content {
+    padding: 20px 12px 50px;
+}
+
+.page-text {
+    font-size: 16px;
+    line-height: 22px;
+
+    margin: 0;
+    margin-bottom: 21px;
+
+    color: var(--text-color-dusty);
+}

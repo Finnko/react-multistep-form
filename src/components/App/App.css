@@ -75,6 +75,10 @@ input[type="radio"].visually-hidden {
     background-color: var(--basic-gray);
 }
 
+.button--rounded {
+    border-radius: 100px;
+}
+
 .button--secondary .button__icon {
     transform: rotate(-180deg);
 }
@@ -136,28 +140,6 @@ input[type="radio"].visually-hidden {
 .form-control:hover,
 .form-control:focus {
     border-color: var(--border-color-hover);
-}
-
-.page-title {
-    font-size: 22px;
-    line-height: 28px;
-
-    margin: 0;
-    margin-bottom: 20px;
-}
-
-.page-content {
-    padding: 20px 12px 50px;
-}
-
-.page-text {
-    font-size: 16px;
-    line-height: 22px;
-
-    margin: 0;
-    margin-bottom: 21px;
-
-    color: var(--text-color-dusty);
 }
 
 .buttons {
