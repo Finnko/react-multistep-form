@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {PathName} from '../../const';
+import {store} from '../../store';
 import {Intro} from '../Intro/Intro';
 import {About} from '../About/About';
 
@@ -18,6 +20,7 @@ function App() {
   }
 
   return (
+    <Provider store={store}>
       <Router>
         <Switch>
           <Route exact path={PathName['0']}>
@@ -28,7 +31,10 @@ function App() {
           </Route>
         </Switch>
       </Router>
+    </Provider>
   );
+    
+     
 }
 
 export default App;

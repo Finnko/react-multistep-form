@@ -17,7 +17,7 @@ function About({prevStep, nextStep, onButtonClick}) {
 
             <form className="about-form">
               <div className="about-radio">
-                <input type="radio" name="sex" id="female" className="about-radio__input visually-hidden"/>
+                <input type="radio" name="sex" id="female" className="about-radio__input visually-hidden" checked/>
                 <label className="about-radio__label" htmlFor="female">Женщина</label>
                 <input type="radio" name="sex" id="male" className="about-radio__input visually-hidden"/>
                 <label className="about-radio__label" htmlFor="male">Мужчина</label>

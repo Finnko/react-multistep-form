@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-//import logo from 'src/img/logo.png';
+import logo from '../../img/logo.png';
 
 import './Header.css';
 
@@ -16,9 +16,9 @@ function Header (props) {
                           <line x1="1" y1="8" x2="19" y2="8" stroke="#152242" strokeWidth="2" strokeLinecap="round"/>
                       </svg>
                   </button>
-                  {/*<Link to={`/`} className="header__logo">*/}
-                  {/*    <img src={logo} alt="Logo" />;*/}
-                  {/*</Link>*/}
+                    <Link to={`/`} className="header__logo">
+                        <img src={logo} alt="Logo" />
+                    </Link>
               </nav>
           </div>
       </header>

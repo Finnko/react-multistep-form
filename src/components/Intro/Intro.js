@@ -1,18 +1,33 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {getPathByStep} from '../../utils/common';
 import {Header} from '../Header/Header';
+import { ReactComponent as JobIcon } from "../../img/job.svg"
 
 import './Intro.css';
 
-function Intro({nextStep, onButtonClick}) {
+function Intro_({
+  nextStep,
+  onButtonClick,
+  firstName,
+  secondName,
+  middleName,
+  dispatch,
+  updateField,
+}) {
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    updateField(name, value);
+  }
   return (
       <Fragment>
         <Header/>
         <div className="container">
           <div className="page-content">
             <h2 className="page-title">
-              Как вас зовут?
+             Whats your name
             </h2>
 
             <p className="page-text intro-text">
@@ -24,7 +39,7 @@ function Intro({nextStep, onButtonClick}) {
                 <label htmlFor="surname" className="form-label">
                   Фамилия
                 </label>
-                <input type="text" id="surname" className="form-control" placeholder="Иванов"/>
+                <input type="text" id="surname" value={firstName} name="firstName" className="form-control" onChange={handleChange}/>
               </div>
 
               <div className="form-field">
@@ -32,16 +47,16 @@ function Intro({nextStep, onButtonClick}) {
                   <label htmlFor="name" className="form-label">
                     Имя
                   </label>
-                  <input type="text" id="name" className="form-control" placeholder="Иван"/>
+                  <input type="text" id="name" value={secondName} name="secondName" className="form-control" onChange={handleChange}/>
                 </div>
               </div>
 
               <div className="form-field">
                 <div className="form-field">
-                  <label htmlFor="surname" className="form-label">
+                  <label htmlFor="middle" className="form-label">
                     Отчество
                   </label>
-                  <input type="text" id="surname" className="form-control" placeholder="Иванович"/>
+                  <input type="text" id="middle" value={middleName} name="middleName" className="form-control" onChange={handleChange}/>
                 </div>
               </div>
             </form>
@@ -57,6 +72,7 @@ function Intro({nextStep, onButtonClick}) {
                   Далее
               </span>
               <span className="button__icon">
+                  <JobIcon />
                   <svg width="15" height="24" viewBox="0 0 15 24" fill="none"
                        xmlns="http://www.w3.org/2000/svg">
                       <path fillRule="evenodd" clipRule="evenodd"
@@ -71,4 +87,26 @@ function Intro({nextStep, onButtonClick}) {
   );
 }
 
-export {Intro};
+function mapStateToProps(state) {
+  return {
+    firstName: state.firstName,
+    secondName: state.secondName,
+    middleName: state.middleName,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateField: (name, value) => {
+      dispatch({
+        type: 'UPDATE_FIELD',
+        payload: {
+          key: name,
+          value,
+        }
+      })
+    }
+  };
+}
+
+export const Intro = connect(mapStateToProps, mapDispatchToProps)(Intro_);
