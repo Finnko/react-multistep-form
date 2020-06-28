@@ -1,3 +1,3 @@
-import {PathName} from '../const';
+import {routes} from '../const';
 
-export const getPathByStep = (step) => PathName[step];
+export const getPathIndex = (path) => routes.findIndex(route => route === path);

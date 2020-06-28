@@ -1,19 +1,19 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getPathByStep} from '../../utils/common';
-import {Header} from '../Header/Header';
+import {ActionCreator} from "../../store/actions/action-creator";
+import NameSpace from "../../store/name-space";
 import { ReactComponent as JobIcon } from "../../img/job.svg"
+import {InputViewMode, PathName} from '../../const';
+import {Layout} from "../Layout/Layout";
+import {Input} from '../Input/Input';
 
 import './Intro.css';
 
 function Intro_({
-  nextStep,
-  onButtonClick,
   firstName,
   secondName,
-  middleName,
-  dispatch,
+  patronymic,
   updateField,
 }) {
 
@@ -21,90 +21,76 @@ function Intro_({
     const { name, value } = event.target;
     updateField(name, value);
   }
+
   return (
-      <Fragment>
-        <Header/>
-        <div className="container">
-          <div className="page-content">
-            <h2 className="page-title">
-             Whats your name
-            </h2>
+      <Layout>
+        <div className="page-content">
+          <h2 className="page-title">
+            Как вас зовут?
+          </h2>
 
-            <p className="page-text intro-text">
-              Заполните как в паспорте, это важно для банков
-            </p>
+          <p className="page-text intro-text">
+            Заполните как в паспорте, это важно для банков
+          </p>
 
-            <form className="intro-form">
-              <div className="form-field">
-                <label htmlFor="surname" className="form-label">
-                  Фамилия
-                </label>
-                <input type="text" id="surname" value={firstName} name="firstName" className="form-control" onChange={handleChange}/>
-              </div>
+          <form className="intro-form">
+            <Input
+              id="surname"
+              label="Фамилия"
+              value={firstName}
+              name="firstName"
+              viewMode={InputViewMode.WITH_LABEL}
+              onInputChange={handleChange}
+            />
 
-              <div className="form-field">
-                <div className="form-field">
-                  <label htmlFor="name" className="form-label">
-                    Имя
-                  </label>
-                  <input type="text" id="name" value={secondName} name="secondName" className="form-control" onChange={handleChange}/>
-                </div>
-              </div>
+            <Input
+                id="name"
+                label="Имя"
+                value={secondName}
+                name="secondName"
+                viewMode={InputViewMode.WITH_LABEL}
+                onInputChange={handleChange}
+            />
 
-              <div className="form-field">
-                <div className="form-field">
-                  <label htmlFor="middle" className="form-label">
-                    Отчество
-                  </label>
-                  <input type="text" id="middle" value={middleName} name="middleName" className="form-control" onChange={handleChange}/>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div className="buttons">
-            <Link
-                to={getPathByStep(nextStep)}
-                className="button button--primary"
-                onClick={() => onButtonClick('next')}
-            >
+            <Input
+                id="patronymic"
+                label="Отчество"
+                value={patronymic}
+                name="patronymic"
+                viewMode={InputViewMode.WITH_LABEL}
+                onInputChange={handleChange}
+            />
+          </form>
+        </div>
+        <div className="buttons">
+          <Link
+              to={PathName.ABOUT}
+              className="button button--primary"
+          >
               <span className="button__text">
                   Далее
               </span>
-              <span className="button__icon">
-                  <JobIcon />
-                  <svg width="15" height="24" viewBox="0 0 15 24" fill="none"
-                       xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" clipRule="evenodd"
-                            d="M14.1213 12L2.56068 0.439339L0.439359 2.56066L9.8787 12L0.43936 21.4393L2.56068 23.5607L14.1213 12Z"
-                            fill="currentColor"/>
-                  </svg>
-                </span>
-            </Link>
-          </div>
+            <span className="button__icon">
+
+            </span>
+          </Link>
         </div>
-      </Fragment>
+      </Layout>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    firstName: state.firstName,
-    secondName: state.secondName,
-    middleName: state.middleName,
+    firstName: state[NameSpace.APP].firstName,
+    secondName: state[NameSpace.APP].secondName,
+    patronymic: state[NameSpace.APP].patronymic,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     updateField: (name, value) => {
-      dispatch({
-        type: 'UPDATE_FIELD',
-        payload: {
-          key: name,
-          value,
-        }
-      })
+      dispatch(ActionCreator.updateField(name, value));
     }
   };
 }

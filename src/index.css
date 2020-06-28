@@ -1,5 +1,5 @@
 :root {
-  --blue-ribbon: #0468FF;
+  --grass: #2b9e7d;
   --big-stone: #152242;
   --athens-gray: #F1F2F4;
   --mercury: #E6E6E6;
@@ -9,13 +9,15 @@
   --basic-black-87: rgba(0, 0, 0, 0.87);
   --basic-black-72: rgba(0, 0, 0, 0.72);
   --basic-black-54: rgba(0, 0, 0, 0.54);
+  --basic-black-32: rgba(0, 0, 0, 0.32);
   --basic-gray: var(--athens-gray);
 
   --text-color: var(--basic-black-87);
   --text-color-dusty: var(--basic-black-72);
   --text-color-secondary: var(--basic-black-54);
+  --text-color-light-gray: var(--basic-black-32);
   --text-color-accent: var(--big-stone);
-  --accent-color: var(--blue-ribbon);
+  --accent-color: var(--grass);
   --border-color: rgba(21, 34, 66, 0.1);
   --border-color-hover: rgba(21, 34, 66, 0.3);
   --color-disabled: rgba(21, 34, 66, 0.2);
@@ -32,7 +34,7 @@
 }
 
 html {
-  font-family: 'Lato', 'Arial', sans-serif;
+  font-family: 'Roboto', 'Arial', sans-serif;
   font-size: var(--font-size);
 
   color: var(--text-color);

@@ -1,85 +1,109 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import {getPathByStep} from '../../utils/common';
-import {Header} from '../Header/Header';
+import {connect} from 'react-redux';
+import NameSpace from '../../store/name-space';
+import {ActionCreator} from '../../store/actions/action-creator';
+import {InputViewMode, personSexNames, routes} from '../../const';
+import {getPathIndex} from '../../utils/common';
+import {Layout} from '../Layout/Layout';
+import {Input} from '../Input/Input';
+import {RadioButton} from '../RadioButton/RadioButton';
 
 import './About.css';
 
-function About({prevStep, nextStep, onButtonClick}) {
+function About_({
+    personSex,
+    birthday,
+    birthdayPlace,
+    updateField,
+    match
+}) {
+  const pageIndex = getPathIndex(match.path);
+  const radioGroupNames = Object.keys(personSexNames);
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    updateField(name, value);
+  }
+
   return (
-      <Fragment>
-        <Header/>
-        <div className="container">
-          <div className="page-content">
-            <h2 className="page-title">
-              Расскажите о себе
-            </h2>
+      <Layout>
+        <div className="page-content">
+          <h2 className="page-title">
+            Расскажите о себе
+          </h2>
 
-            <form className="about-form">
-              <div className="about-radio">
-                <input type="radio" name="sex" id="female" className="about-radio__input visually-hidden" checked/>
-                <label className="about-radio__label" htmlFor="female">Женщина</label>
-                <input type="radio" name="sex" id="male" className="about-radio__input visually-hidden"/>
-                <label className="about-radio__label" htmlFor="male">Мужчина</label>
-              </div>
-
-              <div className="form-field">
-                <label htmlFor="surname" className="form-label">
-                  Дата рождения
-                </label>
-                <input type="text" id="surname" className="form-control" placeholder="25.09.1987"/>
-              </div>
-
-              <div className="form-field">
-                <div className="form-field">
-                  <label htmlFor="name" className="form-label">
-                    Место рождения
-                  </label>
-                  <input type="text" id="name" className="form-control" placeholder="Село Иванововское"/>
-                </div>
-              </div>
-            </form>
-
-            <div className="buttons">
-              <Link
-                  to={getPathByStep(prevStep)}
-                  className="button button--secondary "
-                  onClick={() => onButtonClick('prev')}
-              >
-                <span className="button__icon">
-                    <svg width="15" height="24" viewBox="0 0 15 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd"
-                              d="M14.1213 12L2.56068 0.439339L0.439359 2.56066L9.8787 12L0.43936 21.4393L2.56068 23.5607L14.1213 12Z"
-                              fill="currentColor"/>
-                    </svg>
-                </span>
-                <span className="button__text">
-                    Назад
-                </span>
-              </Link>
-              <Link
-                  to={getPathByStep(nextStep)}
-                  className="button button--primary"
-                  onClick={() => onButtonClick('next')}
-              >
-                <span className="button__text">
-                    Далее
-                </span>
-                <span className="button__icon">
-                  <svg width="15" height="24" viewBox="0 0 15 24" fill="none"
-                       xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" clipRule="evenodd"
-                            d="M14.1213 12L2.56068 0.439339L0.439359 2.56066L9.8787 12L0.43936 21.4393L2.56068 23.5607L14.1213 12Z"
-                            fill="currentColor"/>
-                  </svg>
-                </span>
-              </Link>
+          <form className="about-form">
+            <div className="about-radio">
+              {radioGroupNames.map((name, index) => (
+                <RadioButton
+                    key={name + index}
+                    groupName="personSex"
+                    name={name}
+                    value={personSex}
+                    classNames={`about-radio__input visually-hidden`}
+                    label={personSexNames[name]}
+                    onInputChange={handleChange}
+                />
+              ))}
             </div>
-          </div>
+
+            <Input
+                id="birthday"
+                label="Дата рождения"
+                value={birthday}
+                name="birthday"
+                viewMode={InputViewMode.WITH_LABEL}
+                onInputChange={handleChange}
+            />
+
+            <Input
+                id="birthdayPlace"
+                label="Место рождения"
+                value={birthdayPlace}
+                name="birthdayPlace"
+                viewMode={InputViewMode.WITH_LABEL}
+                onInputChange={handleChange}
+            />
+          </form>
         </div>
-      </Fragment>
+
+        <div className="buttons">
+          <Link
+              to={routes[pageIndex - 1]}
+              className="button button--secondary"
+          >
+            <span className="button__text">
+                Назад
+            </span>
+          </Link>
+          <Link
+              to={routes[pageIndex + 1]}
+              className="button button--primary"
+          >
+            <span className="button__text">
+                Далее
+            </span>
+          </Link>
+        </div>
+      </Layout>
   );
 }
 
-export {About};
+function mapStateToProps(state) {
+  return {
+    birthday: state[NameSpace.APP].birthday,
+    birthdayPlace: state[NameSpace.APP].birthdayPlace,
+    personSex: state[NameSpace.APP].personSex,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateField: (name, value) => {
+      dispatch(ActionCreator.updateField(name, value));
+    }
+  };
+}
+
+export const About = connect(mapStateToProps, mapDispatchToProps)(About_);
