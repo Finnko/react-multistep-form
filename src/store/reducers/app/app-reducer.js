@@ -4,7 +4,7 @@ const initialState = {
   firstName: 'Хабиров',
   secondName: 'Алексей',
   patronymic: 'Расимович',
-  male: '',
+  personSex: 'female',
   birthday: '',
   birthdayPlace: '',
   location: '',

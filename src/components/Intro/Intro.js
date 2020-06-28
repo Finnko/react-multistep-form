@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import {ActionCreator} from "../../store/actions/action-creator";
 import NameSpace from "../../store/name-space";
 import { ReactComponent as JobIcon } from "../../img/job.svg"
+import {InputViewMode, PathName} from '../../const';
+import {Layout} from "../Layout/Layout";
+import {Input} from '../Input/Input';
 
 import './Intro.css';
-import Layout from "../Layout/Layout";
-import {PathName} from '../../const';
-import Input from '../Input/Input';
 
 function Intro_({
   firstName,
@@ -39,6 +39,7 @@ function Intro_({
               label="Фамилия"
               value={firstName}
               name="firstName"
+              viewMode={InputViewMode.WITH_LABEL}
               onInputChange={handleChange}
             />
 
@@ -47,6 +48,7 @@ function Intro_({
                 label="Имя"
                 value={secondName}
                 name="secondName"
+                viewMode={InputViewMode.WITH_LABEL}
                 onInputChange={handleChange}
             />
 
@@ -55,6 +57,7 @@ function Intro_({
                 label="Отчество"
                 value={patronymic}
                 name="patronymic"
+                viewMode={InputViewMode.WITH_LABEL}
                 onInputChange={handleChange}
             />
           </form>

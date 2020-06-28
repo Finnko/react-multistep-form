@@ -6,6 +6,7 @@ import {store} from '../../store/store';
 import {WelcomeScreen} from '../WelcomeScreen/WelcomeScreen';
 import {Intro} from '../Intro/Intro';
 import {About} from '../About/About';
+import {Location} from '../Location/Location';
 
 import './App.css';
 
@@ -23,6 +24,11 @@ function App() {
           <Route path={PathName.ABOUT}>
             {({match}) => (
                 <About match={match}/>
+            )}
+          </Route>
+          <Route path={PathName.LOCATION}>
+            {({match}) => (
+                <Location match={match}/>
             )}
           </Route>
         </Switch>

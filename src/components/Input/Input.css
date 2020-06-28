@@ -21,11 +21,29 @@
     -webkit-touch-callout: none;
 }
 
+.form-control--placeholder {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
+
+    padding: 13px 16px;
+
+    border-bottom: none;
+    border-radius: 4px;
+    background-color: var(--basic-gray);
+}
+
 .form-control::placeholder {
     font-size: 20px;
     line-height: 26px;
 
     color: var(--text-color);
+}
+
+.form-control--placeholder::placeholder {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
 }
 
 .form-label {

@@ -3,21 +3,23 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import NameSpace from '../../store/name-space';
 import {ActionCreator} from '../../store/actions/action-creator';
-import Layout from '../Layout/Layout';
-import Input from '../Input/Input';
-import {PathName, routes} from '../../const';
+import {InputViewMode, personSexNames, routes} from '../../const';
+import {getPathIndex} from '../../utils/common';
+import {Layout} from '../Layout/Layout';
+import {Input} from '../Input/Input';
+import {RadioButton} from '../RadioButton/RadioButton';
 
 import './About.css';
-import {getPathIndex} from '../../utils/common';
 
 function About_({
-    male,
+    personSex,
     birthday,
     birthdayPlace,
     updateField,
     match
 }) {
   const pageIndex = getPathIndex(match.path);
+  const radioGroupNames = Object.keys(personSexNames);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -33,10 +35,17 @@ function About_({
 
           <form className="about-form">
             <div className="about-radio">
-              <input type="radio" name="sex" id="female" className="about-radio__input visually-hidden" checked/>
-              <label className="about-radio__label" htmlFor="female">Женщина</label>
-              <input type="radio" name="sex" id="male" className="about-radio__input visually-hidden"/>
-              <label className="about-radio__label" htmlFor="male">Мужчина</label>
+              {radioGroupNames.map((name, index) => (
+                <RadioButton
+                    key={name + index}
+                    groupName="personSex"
+                    name={name}
+                    value={personSex}
+                    classNames={`about-radio__input visually-hidden`}
+                    label={personSexNames[name]}
+                    onInputChange={handleChange}
+                />
+              ))}
             </div>
 
             <Input
@@ -44,6 +53,7 @@ function About_({
                 label="Дата рождения"
                 value={birthday}
                 name="birthday"
+                viewMode={InputViewMode.WITH_LABEL}
                 onInputChange={handleChange}
             />
 
@@ -52,6 +62,7 @@ function About_({
                 label="Место рождения"
                 value={birthdayPlace}
                 name="birthdayPlace"
+                viewMode={InputViewMode.WITH_LABEL}
                 onInputChange={handleChange}
             />
           </form>
@@ -83,6 +94,7 @@ function mapStateToProps(state) {
   return {
     birthday: state[NameSpace.APP].birthday,
     birthdayPlace: state[NameSpace.APP].birthdayPlace,
+    personSex: state[NameSpace.APP].personSex,
   };
 }
 

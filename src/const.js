@@ -14,4 +14,14 @@ const routes = [
     PathName.SALARY,
 ];
 
-export {PathName, routes};
+const personSexNames = {
+    female: `Женщина`,
+    male: `Мужчина`
+}
+
+const InputViewMode = {
+    WITH_LABEL: `WITH_LABEL`,
+    PLACEHOLDER: `PLACEHOLDER`,
+}
+
+export {PathName, routes, InputViewMode, personSexNames};

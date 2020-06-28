@@ -1,0 +1,29 @@
+.location-form {
+    text-align: center;
+}
+
+.location-text {
+    max-width: 250px;
+    margin: 0 auto 16px;
+    color: var(--text-color-secondary);
+}
+
+.location-value {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: bold;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    margin-bottom: 16px;
+}
+
+.location-note {
+    font-style: italic;
+
+    max-width: 290px;
+    margin: 0 auto;
+
+    color: var(--text-color-light-gray);
+}
